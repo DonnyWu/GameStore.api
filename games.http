@@ -1,4 +1,16 @@
 GET http://localhost:5015/games
 
 ###
-GET http://localhost:5015/games/1
+GET http://localhost:5015/games/3
+
+###
+Post http://localhost:5015/games
+Content-Type: application/json
+
+{
+    "name": "MarioKart 8",
+    "genre": "Racing",
+    "Price": 69.99,
+    "releaseDate": "2025-06-21"
+
+}
