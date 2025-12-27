@@ -33,7 +33,12 @@ app.MapGet("games", () => games);
 app.MapGet("/", () => "Hello World!");
 
 // GET /games/1
-app.MapGet("games/{id}", (int id) => games.Find( game => game.Id == id)).WithName(GetGameEndpointName);
+app.MapGet("games/{id}", (int id) => 
+{
+    GameDto? game = games.Find( game => game.Id == id);
+
+    return game is null ? Results.NotFound() : Results.Ok(game);
+}).WithName(GetGameEndpointName);
 
 app.MapPost("games", (CreateGameDto newGame) => 
 {
